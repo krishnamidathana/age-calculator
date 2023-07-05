@@ -10,6 +10,9 @@ userInput.setAttribute("max", maxDate);
 
 getAge.addEventListener("click", calculateAge);
 function calculateAge() {
+    if (userInput.value == "") {
+    alert("Please Enter Date Of Birth");
+  } else {
   let userDate = new Date(userInput.value);
 
   let d1 = userDate.getDate();
@@ -59,4 +62,4 @@ function calculateAge() {
   console.log(yCount, mCount, dCount);
   console.log(y3, m3, d3);
   userInput.value = "";
-}
+}}
