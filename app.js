@@ -4,6 +4,12 @@ var d2 = new Date().getDate();
 var m2 = new Date().getMonth() + 1;
 var y2 = new Date().getFullYear();
 
+if (m2 < 10) {
+  m2 = "0" + m2;
+}
+if (d2 < 10) {
+  d2 = "0" + d2;
+}
 var maxDate = y2 + "-" + m2 + "-" + d2;
 var userInput = document.getElementById("demo");
 userInput.setAttribute("max", maxDate);
@@ -38,7 +44,8 @@ function calculateAge() {
     d3 = d2 - d1;
   } else {
     m3--;
-    d3 = daysInMonth(y1, m1) + d2 - d1;
+       let dx = Number(d2);
+    d3 = daysInMonth(y1, m1) + dx - d1;
   }
   if (m3 < 0) {
     m3 = 11;
