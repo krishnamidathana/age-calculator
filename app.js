@@ -34,24 +34,17 @@ function calculateAge() {
 
     y3 = currentYear - birthYear;
 
-    if (currentMonth >= birthMonth) {
-      m3 = currentMonth - birthMonth;
-    } else {
+    if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
       y3--;
-      m3 = 12 + currentMonth - birthMonth;
     }
 
-    if (currentDay >= birthDay) {
+    m3 = (currentMonth - birthMonth + 12) % 12;
+
+    if (currentDay < birthDay) {
+      let lastMonthDays = new Date(birthYear, birthMonth, 0).getDate();
+      d3 = lastMonthDays - (birthDay - currentDay);
+    } else {
       d3 = currentDay - birthDay;
-    } else {
-      m3--;
-      let dx = Number(currentDay);
-      d3 = daysInMonth(birthYear, birthMonth) + dx - birthDay;
-    }
-
-    if (m3 < 0) {
-      m3 = 11;
-      y3--;
     }
 
     if (m3 < 10) {
@@ -59,10 +52,6 @@ function calculateAge() {
     }
     if (d3 < 10) {
       d3 = "0" + d3;
-    }
-
-    function daysInMonth(year, month) {
-      return new Date(year, month, 0).getDate();
     }
 
     yCount.innerText = y3;
