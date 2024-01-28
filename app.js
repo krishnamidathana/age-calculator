@@ -38,7 +38,7 @@ function calculateAge() {
       y3--;
     }
 
-    m3 = (currentMonth - birthMonth + 12) % 12;
+    m3 = 12;
 
     if (currentDay < birthDay) {
       let lastMonthDays = new Date(birthYear, birthMonth, 0).getDate();
